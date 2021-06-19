@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Cash Machine</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet"> 
+    <script src="script.js"></script>
+    <style>
+        
+        
+        body{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            padding: 15px;
+            background-color: #ee1b59;
+            display: inline-block;
+            padding: 20px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            text-align: center; 
+            font-family: 'Poppins', sans-serif;
+            
+        }
+        h2{
+            text-align:center ;
+            color: #fff;
+            
+
+        }
+        
+          
+        
+        </style>
+
+    
+</head>
+<body>
+    <h2>Olá, seja bem vindo!</h2>
+
+    <div>
+        <input type="number" min="100" id="money">
+        <button onClick="functionAtm()">Retirar</button>
+    </div>
+    <div id="result"></div>
+    <script>
+        function functionAtm(){
+            let money = document.getElementById('money').value;
+            document.getElementById('result').innerHTML = 'Você receberá essas cédulas';
+            let note = [200, 100, 50, 20, 10, 2];
+            let a = 0;
+            let limit = 300; 
+            let nonote = 0;
+            if(money % 2 === 0){
+                if(money <= limit){
+                for(i=0;money > 0;i++){
+                    if(money >= note[a]){
+                        money = money - note[a];
+                    nonote = nonote+1;
+                    if(money < note[a]){
+                        document.getElementById('result').innerHTML +='<div style="padding-top:10px"><strong>'+note[a]+ ' X </strong>'+ nonote+' </div> <br>';
+                        a = a+0;
+                        nonote = 0;
+                    }    
+
+                    }else{
+                        a = a+1;
+                    }
+                }
+
+            }else{
+                alert('Você ultrapassou seu limite!')
+             }
+
+                }else{
+                    alert('Por favor, tente de novo!')
+                }
+            }
+
+        
+
+        
+    </script>
+
+    
+</body>
+</html>
